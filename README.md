@@ -12,7 +12,7 @@ Vtclient is a Go-based command-line tool and library for fetching undetected URL
 ## Installation
 
 ```bash
-go install https://github.com/ogow/vturls.git
+go install github.com/ogow/vturls/cmd/vturls@latest -v
 ```
 
 ## Usage
