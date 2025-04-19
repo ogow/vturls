@@ -3,24 +3,22 @@
 Vtclient is a Go-based command-line tool and library for fetching undetected URLs for a domain from the VirusTotal v2 API.
 
 ## Features
-Handles automatic API key rotation on quota errors.
 
-Fetches and prints undetected URLs per domain.
-
-Supports reading domains from stdin, a file, or as a direct argument.
-
-Built-in rate limiting with countdown between requests.
++ Handles automatic API key rotation on quota errors.
++ Fetches and prints undetected URLs per domain.
++ Supports reading domains from stdin, a file, or as a direct argument.
++ Built-in rate limiting with countdown between requests.
 
 ## Installation
+
 ```bash
-git clone https://github.com/yourusername/vtclient.git
-cd vtclient
-go build -o vtclient main.go
+go install https://github.com/ogow/vturls.git
 ```
 
 ## Usage
+
 ```bash
-./vtclient -t <api_key1>,<api_key2>,... [domain|filename]
+vturls -t <api_key1>,<api_key2>,... [domain|filename]
 ```
 
 + `-t` — Required: Comma-separated VirusTotal API keys.
@@ -30,21 +28,22 @@ go build -o vtclient main.go
     + If omitted, domains are read from stdin.
 
 ### Examples
+
 **Single domain:**
 ```bash
-./vtclient -t abc123,def456 example.com
+vturls -t abc123,def456 example.com
 ```
 
 **List from file:**
 
 ```bash
-./vtclient -t abc123 domains.txt
+vturls -t abc123 domains.txt
 ```
 
 **Piped input:**
 
 ```bash
-cat domains.txt | ./vtclient -t abc123
+cat domains.txt | vturls -t abc123
 ```
 
 ## Notes
@@ -53,7 +52,8 @@ cat domains.txt | ./vtclient -t abc123
 + The tool waits 20 seconds between domain queries to respect VirusTotal's rate limits.
 + If all API keys are exhausted for 1 minute, the tool exits with an error.
 
-API Reference
+## API Reference
+
 Uses VirusTotal v2 API:
 
 ```plain
